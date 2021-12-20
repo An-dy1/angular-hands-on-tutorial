@@ -23,24 +23,24 @@ export class GameService {
     }
   }
 
+  setWinner(winningTeam: string) {
+    this.winner = winningTeam;
+    this.gameOver = true;
+  }
+
   checkForWinner(tileCategory: string, currentTeam: string) {
     if (this.blueTilesSelected === 2) {
-      this.winner = 'blue';
+      this.setWinner('blue');
     } else if (this.redTilesSelected === 2) {
-      this.winner = 'red';
+      this.setWinner('red');
     } else if (tileCategory === 'assassin') {
       if (currentTeam.toLocaleLowerCase() === 'red') {
-        this.winner = 'blue';
+        this.setWinner('blue');
       } else {
-        this.winner = 'red';
+        this.setWinner('red');
       }
     }
 
-    if (this.winner !== undefined) {
-      this.gameOver = true;
-      return true;
-    } else {
-      return false;
-    }
+    return this.gameOver;
   }
 }

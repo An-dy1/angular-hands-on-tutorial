@@ -6,7 +6,12 @@
   <button (click)="setRedTeam()">Red</button>
   <button (click)="setBlueTeam()">Blue</button>
   <br />
-  Current Team: <span class="{{ teamTextClass }}">{{ currentTeam }}</span>
+  Current Team:
+  <span
+    [class.redtext]="currentTeam == 'Red'"
+    [class.bluetext]="currentTeam == 'Blue'"
+    >{{ currentTeam }}</span
+  >
 </div>
 
 <fn-gamegrid
