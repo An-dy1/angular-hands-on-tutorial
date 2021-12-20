@@ -1,0 +1,61 @@
+/* Add application styles & imports to this file! */
+
+button {
+  margin-right:10px
+}
+
+.gamegrid {
+  display:grid;
+  grid-template-columns: 70px 70px 70px;
+  grid-template-rows: 70px 70px 70px;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.gamegrid > div {
+  font-size:80%;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color:lightgray;
+}
+
+.keygrid {
+  display:grid;
+  grid-template-columns: 15px 15px 15px;
+  grid-template-rows: 15px 15px 15px;
+  column-gap: 2px;
+  row-gap: 2px;
+  margin-top:10px;
+}
+
+.keygrid > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.bluetext {
+  color: blue;
+}
+
+.redtext {
+  color: red;
+}
+
+.gamegrid > div.blue, .blue {
+  background-color: lightblue;
+}
+.gamegrid > div.red, .red {
+  background-color: red;
+}
+.gamegrid > div.neutral, .neutral {
+  background-color: chocolate
+}
+.gamegrid > div.assassin, .assassin {
+  background-color: #555;
+}
