@@ -19,15 +19,10 @@
 <button style="margin-top:10px" (click)="toggleKey()">Toggle Key</button>
 
 <div class="keygrid" [style.visibility]="keyVisibility">
-  <div class="blue">o</div>
-  <div class="neutral"></div>
-  <div class="red">o</div>
-
-  <div class="assassin">x</div>
-  <div class="blue">o</div>
-  <div class="neutral"></div>
-
-  <div class="neutral"></div>
-  <div class="neutral"></div>
-  <div class="red">o</div>
+  <div *ngFor="let keyTile of gameService.tiles" [class]="keyTile.tileType">
+    <span *ngIf="keyTile.tileType === 'blue' || keyTile.tileType === 'red'"
+      >o</span
+    >
+    <span *ngIf="keyTile.tileType === 'assassin'">x</span>
+  </div>
 </div>

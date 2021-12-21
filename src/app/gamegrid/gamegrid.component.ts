@@ -14,6 +14,7 @@ export class GameGridComponent {
 
   newSelectTile(tile: GameTile) {
     let selectedClass = tile.tileType;
+
     this.game.countTile(selectedClass);
     tile.selected = true;
     tile.currentClass = tile.tileType;

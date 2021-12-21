@@ -24,12 +24,6 @@ export class GameService {
 
   winner: Team;
 
-  gridKey = [
-    ['blue', 'neutral', 'red'],
-    ['assassin', 'blue', 'neutral'],
-    ['neutral', 'neutral', 'red'],
-  ];
-
   tiles: GameTile[] = [
     {
       text: 'Battlefield Earth',
