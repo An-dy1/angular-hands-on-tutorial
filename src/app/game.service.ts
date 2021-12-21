@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Team } from './models/team';
 
 @Injectable({
   providedIn: 'root',
@@ -6,19 +7,21 @@ import { Injectable } from '@angular/core';
 export class GameService {
   blueTilesSelected = 0;
   redTilesSelected = 0;
-  winner: string;
+
   gameOver = false;
 
-  redTeam = {
+  redTeam: Team = {
     name: 'Red',
     color: 'red',
   };
-  blueTeam = {
+  blueTeam: Team = {
     name: 'Blue',
     color: 'blue',
   };
 
-  currentTeam = this.redTeam;
+  currentTeam: Team = this.redTeam;
+
+  winner: Team;
 
   gridKey = [
     ['blue', 'neutral', 'red'],
@@ -34,21 +37,21 @@ export class GameService {
     }
   }
 
-  setWinner(winningTeam: string) {
+  setWinner(winningTeam: Team) {
     this.winner = winningTeam;
     this.gameOver = true;
   }
 
   checkForWinner(tileCategory: string) {
     if (this.blueTilesSelected === 2) {
-      this.setWinner(this.blueTeam.color);
+      this.setWinner(this.blueTeam);
     } else if (this.redTilesSelected === 2) {
-      this.setWinner(this.redTeam.color);
+      this.setWinner(this.redTeam);
     } else if (tileCategory === 'assassin') {
       if (this.currentTeam === this.redTeam) {
-        this.setWinner(this.blueTeam.color);
+        this.setWinner(this.blueTeam);
       } else {
-        this.setWinner(this.redTeam.color);
+        this.setWinner(this.redTeam);
       }
     }
 

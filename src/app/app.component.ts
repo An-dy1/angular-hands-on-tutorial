@@ -1,6 +1,7 @@
 import { Component, VERSION } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { GameService } from './game.service';
+import { Team } from './models/team';
 
 @Component({
   selector: 'fn-app',
@@ -24,8 +25,8 @@ export class AppComponent {
     this.titleService.setTitle(newTitle);
   }
 
-  displayWinner(team) {
-    this.winningMessage = team + ' won!';
+  displayWinner(team: Team) {
+    this.winningMessage = team.name + ' won!';
     this.setTitle('Flopbuster - ' + this.winningMessage);
   }
 
