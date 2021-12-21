@@ -10,63 +10,6 @@ import { GameTile } from '../models/GameTile';
 export class GameGridComponent {
   @Output() teamWon = new EventEmitter();
 
-  tiles = [
-    {
-      text: 'Battlefield Earth',
-      x: 0,
-      y: 0,
-      tileType: 'blue',
-    },
-    {
-      text: 'Howard the Duck',
-      x: 0,
-      y: 1,
-      tileType: 'neutral',
-    },
-    {
-      text: 'Batman and Robin',
-      x: 0,
-      y: 2,
-      tileType: 'red',
-    },
-    {
-      text: 'Catwoman',
-      x: 1,
-      y: 0,
-      tileType: 'assassin',
-    },
-    {
-      text: 'Jack and Jill',
-      x: 1,
-      y: 1,
-      tileType: 'blue',
-    },
-    {
-      text: 'Cats',
-      x: 1,
-      y: 2,
-      tileType: 'neutral',
-    },
-    {
-      text: 'Wing Commander',
-      x: 2,
-      y: 0,
-      tileType: 'neutral',
-    },
-    {
-      text: 'Dudley Do-Right',
-      x: 2,
-      y: 1,
-      tileType: 'neutral',
-    },
-    {
-      text: 'Twilight',
-      x: 2,
-      y: 2,
-      tileType: 'red',
-    },
-  ];
-
   tileClass00 = '';
   tileClass01 = '';
   tileClass02 = '';
@@ -77,7 +20,7 @@ export class GameGridComponent {
   tileClass21 = '';
   tileClass22 = '';
 
-  constructor(private game: GameService) {}
+  constructor(public game: GameService) {}
 
   selectTile(x: number, y: number) {
     let className = this.game.gridKey[x][y];
@@ -88,5 +31,18 @@ export class GameGridComponent {
     }
     // if check for winner returns true
     // then emit winner
+  }
+
+  newSelectTile(index: number) {
+    // console.log(`${this.game.tiles[index].text}`);
+    let selectedClass = this.game.tiles[index].tileType;
+    this.game.countTile(selectedClass);
+
+    this.game.setTileAsSelected(index);
+    console.log(`${this.game.tiles[index].selected}`);
+
+    if (this.game.checkForWinner(selectedClass)) {
+      this.teamWon.emit(this.game.winner);
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Team } from './models/team';
+import { GameTile } from './models/GameTile';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,76 @@ export class GameService {
     ['assassin', 'blue', 'neutral'],
     ['neutral', 'neutral', 'red'],
   ];
+
+  tiles: GameTile[] = [
+    {
+      text: 'Battlefield Earth',
+      x: 0,
+      y: 0,
+      tileType: 'blue',
+      selected: false,
+    },
+    {
+      text: 'Howard the Duck',
+      x: 0,
+      y: 1,
+      tileType: 'neutral',
+      selected: false,
+    },
+    {
+      text: 'Batman and Robin',
+      x: 0,
+      y: 2,
+      tileType: 'red',
+      selected: false,
+    },
+    {
+      text: 'Catwoman',
+      x: 1,
+      y: 0,
+      tileType: 'assassin',
+      selected: false,
+    },
+    {
+      text: 'Jack and Jill',
+      x: 1,
+      y: 1,
+      tileType: 'blue',
+      selected: false,
+    },
+    {
+      text: 'Cats',
+      x: 1,
+      y: 2,
+      tileType: 'neutral',
+      selected: false,
+    },
+    {
+      text: 'Wing Commander',
+      x: 2,
+      y: 0,
+      tileType: 'neutral',
+      selected: false,
+    },
+    {
+      text: 'Dudley Do-Right',
+      x: 2,
+      y: 1,
+      tileType: 'neutral',
+      selected: false,
+    },
+    {
+      text: 'Twilight',
+      x: 2,
+      y: 2,
+      tileType: 'red',
+      selected: false,
+    },
+  ];
+
+  setTileAsSelected(index: number) {
+    this.tiles[index].selected = true;
+  }
 
   countTile(tileCategory: string) {
     if (tileCategory === 'blue') {
