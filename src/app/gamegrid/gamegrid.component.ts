@@ -10,39 +10,28 @@ import { GameTile } from '../models/GameTile';
 export class GameGridComponent {
   @Output() teamWon = new EventEmitter();
 
-  tileClass00 = '';
-  tileClass01 = '';
-  tileClass02 = '';
-  tileClass10 = '';
-  tileClass11 = '';
-  tileClass12 = '';
-  tileClass20 = '';
-  tileClass21 = '';
-  tileClass22 = '';
-
   constructor(public game: GameService) {}
 
-  selectTile(x: number, y: number) {
-    let className = this.game.gridKey[x][y];
-    this['tileClass' + x + y] = className;
-    this.game.countTile(className);
-    if (this.game.checkForWinner(className)) {
-      this.teamWon.emit(this.game.winner);
-    }
-    // if check for winner returns true
-    // then emit winner
-  }
-
-  newSelectTile(index: number) {
-    // console.log(`${this.game.tiles[index].text}`);
-    let selectedClass = this.game.tiles[index].tileType;
+  newSelectTile(tile: GameTile) {
+    let selectedClass = tile.tileType;
     this.game.countTile(selectedClass);
-
-    this.game.setTileAsSelected(index);
-    console.log(`${this.game.tiles[index].selected}`);
+    tile.selected = true;
+    tile.currentClass = tile.tileType;
 
     if (this.game.checkForWinner(selectedClass)) {
       this.teamWon.emit(this.game.winner);
     }
   }
+
+  // old version of the above method
+  // selectTile(x: number, y: number) {
+  //   let className = this.game.gridKey[x][y];
+  //   this['tileClass' + x + y] = className;
+  //   this.game.countTile(className);
+  //   if (this.game.checkForWinner(className)) {
+  //     this.teamWon.emit(this.game.winner);
+  //   }
+  //   // if check for winner returns true
+  //   // then emit winner
+  // }
 }

@@ -1,20 +1,15 @@
 <div class="gamegrid">
   <div
     *ngFor="let tile of game.tiles; index as i"
-    (click)="newSelectTile(i)"
-    [class.neutral]="
-      game.tiles[i].tileType === 'neutral' && game.tiles[i].selected === true
-    "
-    [class.red]="
-      game.tiles[i].tileType === 'red' && game.tiles[i].selected === true
-    "
-    [class.blue]="
-      game.tiles[i].tileType === 'blue' && game.tiles[i].selected === true
-    "
-    [class.assassin]="
-      game.tiles[i].tileType === 'assassin' && game.tiles[i].selected === true
-    "
+    (click)="newSelectTile(tile)"
+    [class]="tile.currentClass"
   >
-    {{ game.tiles[i].text }}
+    {{ tile.text }}
   </div>
 </div>
+
+<!-- old way of class binding: 
+  [class.neutral]="tile.tileType === 'neutral' && tile.selected === true"
+    [class.red]="tile.tileType === 'red' && tile.selected === true"
+    [class.blue]="tile.tileType === 'blue' && tile.selected === true"
+    [class.assassin]="tile.tileType === 'assassin' && tile.selected === true"-->

@@ -37,6 +37,7 @@ export class GameService {
       y: 0,
       tileType: 'blue',
       selected: false,
+      currentClass: '',
     },
     {
       text: 'Howard the Duck',
@@ -44,6 +45,7 @@ export class GameService {
       y: 1,
       tileType: 'neutral',
       selected: false,
+      currentClass: '',
     },
     {
       text: 'Batman and Robin',
@@ -51,6 +53,7 @@ export class GameService {
       y: 2,
       tileType: 'red',
       selected: false,
+      currentClass: '',
     },
     {
       text: 'Catwoman',
@@ -58,6 +61,7 @@ export class GameService {
       y: 0,
       tileType: 'assassin',
       selected: false,
+      currentClass: '',
     },
     {
       text: 'Jack and Jill',
@@ -65,6 +69,7 @@ export class GameService {
       y: 1,
       tileType: 'blue',
       selected: false,
+      currentClass: '',
     },
     {
       text: 'Cats',
@@ -72,6 +77,7 @@ export class GameService {
       y: 2,
       tileType: 'neutral',
       selected: false,
+      currentClass: '',
     },
     {
       text: 'Wing Commander',
@@ -79,6 +85,7 @@ export class GameService {
       y: 0,
       tileType: 'neutral',
       selected: false,
+      currentClass: '',
     },
     {
       text: 'Dudley Do-Right',
@@ -86,6 +93,7 @@ export class GameService {
       y: 1,
       tileType: 'neutral',
       selected: false,
+      currentClass: '',
     },
     {
       text: 'Twilight',
@@ -93,12 +101,9 @@ export class GameService {
       y: 2,
       tileType: 'red',
       selected: false,
+      currentClass: '',
     },
   ];
-
-  setTileAsSelected(index: number) {
-    this.tiles[index].selected = true;
-  }
 
   countTile(tileCategory: string) {
     if (tileCategory === 'blue') {

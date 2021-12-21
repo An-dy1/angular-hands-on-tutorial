@@ -4,4 +4,5 @@ export class GameTile {
   y: number;
   tileType: string;
   selected: boolean;
+  currentClass: string;
 }
