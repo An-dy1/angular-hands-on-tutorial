@@ -9,8 +9,6 @@ import { GameService } from './game.service';
 })
 export class AppComponent {
   keyVisibility = 'hidden';
-  currentTeam = 'Red';
-  teamTextClass = 'redtext';
   winningMessage = '';
 
   public constructor(
@@ -32,13 +30,11 @@ export class AppComponent {
   }
 
   setRedTeam() {
-    this.currentTeam = 'Red';
-    this.teamTextClass = 'redtext';
+    this.gameService.currentTeam = this.gameService.redTeam;
   }
 
   setBlueTeam() {
-    this.currentTeam = 'Blue';
-    this.teamTextClass = 'bluetext';
+    this.gameService.currentTeam = this.gameService.blueTeam;
   }
 
   toggleKey() {

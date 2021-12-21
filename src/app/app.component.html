@@ -8,16 +8,13 @@
   <br />
   Current Team:
   <span
-    [class.redtext]="currentTeam == 'Red'"
-    [class.bluetext]="currentTeam == 'Blue'"
-    >{{ currentTeam }}</span
+    [class.redtext]="gameService.currentTeam === gameService.redTeam"
+    [class.bluetext]="gameService.currentTeam === gameService.blueTeam"
+    >{{ gameService.currentTeam.name }}</span
   >
 </div>
 
-<fn-gamegrid
-  [currentTeam]="currentTeam"
-  (teamWon)="displayWinner($event)"
-></fn-gamegrid>
+<fn-gamegrid (teamWon)="displayWinner($event)"></fn-gamegrid>
 
 <button style="margin-top:10px" (click)="toggleKey()">Toggle Key</button>
 

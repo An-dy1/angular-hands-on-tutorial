@@ -8,6 +8,18 @@ export class GameService {
   redTilesSelected = 0;
   winner: string;
   gameOver = false;
+  // currentTeam = 'Red';
+
+  redTeam = {
+    name: 'Red',
+    color: 'red',
+  };
+  blueTeam = {
+    name: 'Blue',
+    color: 'blue',
+  };
+
+  currentTeam = this.redTeam;
 
   gridKey = [
     ['blue', 'neutral', 'red'],
@@ -28,13 +40,13 @@ export class GameService {
     this.gameOver = true;
   }
 
-  checkForWinner(tileCategory: string, currentTeam: string) {
+  checkForWinner(tileCategory: string) {
     if (this.blueTilesSelected === 2) {
       this.setWinner('blue');
     } else if (this.redTilesSelected === 2) {
       this.setWinner('red');
     } else if (tileCategory === 'assassin') {
-      if (currentTeam.toLocaleLowerCase() === 'red') {
+      if (this.currentTeam.name.toLocaleLowerCase() === 'red') {
         this.setWinner('blue');
       } else {
         this.setWinner('red');
