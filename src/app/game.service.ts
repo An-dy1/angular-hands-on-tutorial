@@ -8,7 +8,6 @@ export class GameService {
   redTilesSelected = 0;
   winner: string;
   gameOver = false;
-  // currentTeam = 'Red';
 
   redTeam = {
     name: 'Red',
@@ -42,14 +41,14 @@ export class GameService {
 
   checkForWinner(tileCategory: string) {
     if (this.blueTilesSelected === 2) {
-      this.setWinner('blue');
+      this.setWinner(this.blueTeam.color);
     } else if (this.redTilesSelected === 2) {
-      this.setWinner('red');
+      this.setWinner(this.redTeam.color);
     } else if (tileCategory === 'assassin') {
-      if (this.currentTeam.name.toLocaleLowerCase() === 'red') {
-        this.setWinner('blue');
+      if (this.currentTeam === this.redTeam) {
+        this.setWinner(this.blueTeam.color);
       } else {
-        this.setWinner('red');
+        this.setWinner(this.redTeam.color);
       }
     }
 
